@@ -5,11 +5,10 @@ import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pages.BrandsPage;
+import pages.RunPage;
 import pages.HomePage;
-import pages.AdidasPage;
+import pages.ShortsPage;
 import java.time.Duration;
-import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -18,8 +17,8 @@ public class WiggleSteps {
 
     WebDriver driver = Hooks.getDriver();
     HomePage homePage = new HomePage(driver);
-    BrandsPage brandsPage = new BrandsPage(driver);
-    AdidasPage adidasPage = new AdidasPage(driver);
+    RunPage RunPage = new RunPage(driver);
+    ShortsPage shortsPage = new ShortsPage(driver);
 
     @Given("User is on the Wiggle home page")
     public void user_is_on_home_page() {
@@ -28,42 +27,42 @@ public class WiggleSteps {
 
     @When("User navigates to the {string} section")
     public void user_navigates_to_section(String section) {
-        homePage.goToBrands();
+        homePage.goToRun();
     }
 
     @When("User selects the first brand in the list \\(Adidas)")
-    public void user_selects_first_brand() {
-        brandsPage.selectFirstBrand();
+    public void user_selects_first_run() {
+        RunPage.selectFirstBrand();
     }
 
     @Then("Adidas brand page is displayed")
-    public void adidas_page_is_displayed() {
-        assertTrue(adidasPage.isAdidasPageDisplayed());
+    public void shorts_page_is_displayed() {
+        assertTrue(shortsPage.isShortsPageDisplayed());
     }
 
     @When("User collapses the left filter panel")
     public void user_collapses_filter_panel() {
-        adidasPage.toggleFilterPanel();
+        shortsPage.toggleFilterPanel();
     }
 
     @Then("The filter panel should be collapsed")
     public void filter_panel_should_be_collapsed() {
-        assertTrue(adidasPage.isFilterPanelCollapsed());
+        assertTrue(shortsPage.isFilterPanelCollapsed());
     }
 
     @When("User expands the left filter panel")
     public void user_expands_filter_panel() {
-        adidasPage.toggleFilterPanel();
+        shortsPage.toggleFilterPanel();
     }
 
     @When("User sorts products by {string}")
     public void user_sorts_products(String criteria) {
-        adidasPage.sortBy(criteria);
+        shortsPage.sortBy(criteria);
     }
 
     @Then("Products should be sorted by high price")
     public void products_sorted_by_high_price() {
-        assertTrue(adidasPage.isSortApplied("price_desc"));
+        assertTrue(shortsPage.isSortApplied("price_desc"));
     }
 
     @When("User scrolls to the bottom of the page")
@@ -115,6 +114,20 @@ public class WiggleSteps {
     @Then("Brands section should be visible on the main menu")
     public void brands_section_visible() {
         assertTrue(homePage.isBrandsMenuVisible());
+    }
+
+    @And("User selects the first product in the list \\(Shorts)")
+    public void userSelectsTheFirstProductInTheListShorts() {
+        
+    }
+
+    @Then("Shorts run page is displayed")
+    public void shortsRunPageIsDisplayed() {
+        
+    }
+
+    @Then("Run section should be visible on the main menu")
+    public void runSectionShouldBeVisibleOnTheMainMenu() {
     }
 }
 

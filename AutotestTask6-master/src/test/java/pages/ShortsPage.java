@@ -7,10 +7,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class AdidasPage {
+public class ShortsPage {
     WebDriver driver;
 
-    public AdidasPage(WebDriver driver) {
+    public ShortsPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this); // Инициализация всех @FindBy
     }
@@ -30,7 +30,7 @@ public class AdidasPage {
     @FindBy(xpath = "//h3[contains(text(),'Sort By')]/ancestor::li")
     WebElement filterSection;
 
-    public boolean isAdidasPageDisplayed() {
+    public boolean isShortsPageDisplayed() {
         return driver.getCurrentUrl().contains("/adidas");
     }
 
